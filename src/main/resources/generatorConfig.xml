@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--连接数据库-->
+    <context id="simple" targetRuntime="MyBatis3">
+        <!-- 配置MBG要连接的数据库信息 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://110.41.50.108:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai"
+                        userId="root"
+                        password="ar352878987">
+            <!-- 解决mysql驱动升级到8.0后不生成指定数据库代码的问题 -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <!-- 用于控制实体类的生成 -->
+        <javaModelGenerator targetPackage="com.maoyan.model" targetProject="src/main/java"/>
+        <!-- 用于控制Mapper.xml文件的生成 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <!-- 用于控制Mapper接口的生成 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.maoyan.mapper"
+                             targetProject="src/main/java"/>
+        <!-- 配置需要生成的表，生成全部表tableName设为% -->
+        <table tableName="%"/>
+    </context>
+</generatorConfiguration>
