@@ -6,8 +6,11 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
 public class SpringDocConfig {
@@ -26,6 +29,7 @@ public class SpringDocConfig {
                                 .email("1071352028@qq.com")))
                 .externalDocs(new ExternalDocumentation()
                         .description("猫颜的博客")
-                        .url("http://"));
+                        .url("http://"))
+                .security(List.of(new SecurityRequirement().addList("DevelopmentTemplateToken")));
     }
 }
