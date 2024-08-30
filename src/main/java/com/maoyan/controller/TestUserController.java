@@ -12,6 +12,7 @@ import com.maoyan.service.LoginServiceImpl;
 import com.maoyan.service.RegisterServiceImpl;
 import com.maoyan.service.TestUserService;
 import com.maoyan.utils.AjaxResult;
+import com.maoyan.utils.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +41,11 @@ public class TestUserController {
     @GetMapping(value = "/user")
     @Operation(summary = "查询当前用户信息", description = "查询当前用户信息")
     @SaCheckLogin
-    public AjaxResult queryCurrentUser() {
+    public Result queryCurrentUser() {
         long loginIdAsLong = StpUtil.getLoginIdAsLong();
         TestUser userById = testUserService.getUserById(loginIdAsLong);
-        return AjaxResult.success("查询成功", userById);
+        return Result.ok("查询成功",userById);
+//        return AjaxResult.success("查询成功", userById);
     }
 
     @PostMapping(value = "/login")
